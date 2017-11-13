@@ -21,37 +21,37 @@ rihanna = User.create(
     password: "riri",
 )
 wholefoods = Post.create(
-    type: "online",
+    category: "online",
     title: "Whole Foods",
     description: "Going to Whole Foods today, need me to pick you up anything?",
 )
 starbucks = Post.create(
-    type: "both",
+    category: "both",
     title: "Starbucks",
     description: "Do you work at Starbucks? Because I like you a latte.",
 )
 forgot = Post.create(
-    type: "in-person",
+    category: "in-person",
     title: "Forgot",
     description: "You're so beautiful that I forgot my pickup line",
 )
 laptop = Post.create(
-    type: "online",
+    category: "online",
     title: "Laptop",
     description: "Hey, are you the bottom of my laptop because you're hot and im getting nervous!",
 )
 god = Post.create(
-    type: "both",
+    category: "both",
     title: "God Made",
     description: "If God made anything prettier than you I hope he kept it for himself!",
 )
 potter = Post.create(
-    type: "in-person",
+    category: "in-person",
     title: "Harry Potter",
     description: "Going to bed? Mind if I Slytherin?",
 )
 stark = Post.create(
-    type: "both",
+    category: "both",
     title: "Stark",
     description: "I've fallen harder for you than Bran Stark.",
 )
