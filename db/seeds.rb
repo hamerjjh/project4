@@ -5,3 +5,53 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+User.destroy_all
+Post.destroy_all
+
+users = []
+posts = []
+
+jonathan = User.create(
+    username: "jonathanH",
+    password: "jonathanH",
+)
+rihanna = User.create(
+    username: "riri",
+    password: "riri",
+)
+wholefoods = Post.create(
+    type: "online",
+    title: "Whole Foods",
+    description: "Going to Whole Foods today, need me to pick you up anything?",
+)
+starbucks = Post.create(
+    type: "both",
+    title: "Starbucks",
+    description: "Do you work at Starbucks? Because I like you a latte.",
+)
+forgot = Post.create(
+    type: "in-person",
+    title: "Forgot",
+    description: "You're so beautiful that I forgot my pickup line",
+)
+laptop = Post.create(
+    type: "online",
+    title: "Laptop",
+    description: "Hey, are you the bottom of my laptop because you're hot and im getting nervous!",
+)
+god = Post.create(
+    type: "both",
+    title: "God Made",
+    description: "If God made anything prettier than you I hope he kept it for himself!",
+)
+potter = Post.create(
+    type: "in-person",
+    title: "Harry Potter",
+    description: "Going to bed? Mind if I Slytherin?",
+)
+stark = Post.create(
+    type: "both",
+    title: "Stark",
+    description: "I've fallen harder for you than Bran Stark.",
+)
