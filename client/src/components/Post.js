@@ -45,40 +45,43 @@ const PostBody = styled.div`
     
   `
 
-const Hello = styled.div`
-.tag {
+const NameTag = styled.div`
     border-radius: 20px;
     border: 2px solid orange;
     width: 400px;
     height: 250px;
-  }
+  `
   
-  header {
+  const Header = styled.div` 
     background: orange;
     border-top-right-radius: 20px;
     border-top-left-radius: 20px;
     padding: 2px;
-  }
+  `
   
-  .hello {
+  const Hello = styled.div`
     font-family: sans-serif;
     font-weight: bold;
     text-align: center;
     font-size: 60px;
     color: white;
-  }
+  `
   
-  .mynameis {
+  const NameIs = styled.div`
     font-family: sans-serif;
     font-weight: bold;
     text-align: center;
     font-size: 30px;
-  }
+  `
   
-  .dottedline {
+  const DottedLine = styled.div`.dottedline {
     border-top: 3px dotted black;
     margin-top: 100px;
   }
+`
+const NameTagContainer = styled.div`
+display: flex;
+justify-content: space-around;
 `
 
 
@@ -141,7 +144,26 @@ class Post extends Component {
             <PostBody>
               
                 <PostName>{this.state.posts.title}</PostName>
-                <Hello><p>Description: {this.state.posts.description}</p></Hello>
+                <NameTagContainer>
+                <NameTag>
+                    
+                        <Header>
+                            <Hello>
+                                Hello
+                             </Hello>
+                             </Header>
+                                <NameIs>
+                                <p>{this.state.posts.description}</p> 
+                                </NameIs>
+                                    <DottedLine>
+                                    
+                                    </DottedLine>
+                               
+                            
+                        
+                    
+                </NameTag>
+                </NameTagContainer>
                 
              
             
