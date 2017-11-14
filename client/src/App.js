@@ -1,19 +1,47 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
+import styled from 'styled-components'
+import axios from "axios"
+import HomePage from "./components/HomePage"
+import NavBar from './components/NavBar'
+import SplashPage from "./components/SplashPage"
+import LogInPage from "./components/LogInPage"
 
 class App extends Component {
+
+state = {
+  users: [],
+  posts: []
+}
+
+async componentWillMount() {
+  try {
+    const response = await axios.get("/api/posts")
+    this.setState({posts: response.data})
+    const userResponse = await axios.get("/api/users")
+
+  } catch(error) {
+    console.log(error)
+  }
+}
+
+
+
+
   render() {
+    const HomePageComponent = () => (<HomePage posts={this.state.posts}/>)
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <Router>
+      <div>
+        <NavBar/>
+      <Switch>
+        <Route exact path="/" render={SplashPage} />
+        <Route exact path="/home" render={HomePageComponent} />
+        <Route exact path="/login" component={LogInPage} />
+       
+     </Switch>
       </div>
+      </Router>
     );
   }
 }
