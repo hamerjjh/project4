@@ -7,20 +7,6 @@ import PostCard from './PostCard'
 
 
 
-const PostImageBanner = styled.div`
-    img {
-        width: 100%;
-        background-size: cover;
-        background-position: center;
-        height: 300px;
-        background-repeat: no-repeat;
-        padding-top: 0px;
-        margin-top: 15px;
-        margin-right: 0px;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    }
-  `
-
   const PostContainer = styled.div`
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0   6px 20px 0 rgba(0, 0, 0, 0.19);
         padding-top: 0px;
@@ -115,12 +101,12 @@ class Post extends Component {
 
         return (
             <div>
-            <PostImageBanner>{this.state.post.title}</PostImageBanner>
+            <div>{this.state.posts.title}</div>
             <PostContainer>
             <PostBody>
               
-                <PostName>{this.state.post.category}</PostName>
-                <p>Description: {this.state.post.description}</p>
+                <PostName>{this.state.posts.category}</PostName>
+                <p>Description: {this.state.posts.description}</p>
                 
              
             

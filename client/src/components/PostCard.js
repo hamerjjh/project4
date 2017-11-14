@@ -47,7 +47,7 @@ class PostCard extends Component {
         return (
             <PostCardStyles>
                 <h4>{this.props.post.title}</h4>
-                <h5>{this.props.post.text}</h5>
+                <h5>{this.props.post.description}</h5>
                 <button onClick={this.toggleShowConfirmationAlert}>Delete Post</button>
                 <Link to={`/posts/${this.props.post.id}/`}>
                     <button>Edit </button> 
