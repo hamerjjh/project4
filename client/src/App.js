@@ -6,6 +6,7 @@ import HomePage from "./components/HomePage"
 import NavBar from './components/NavBar'
 import SplashPage from "./components/SplashPage"
 import LogInPage from "./components/LogInPage"
+import Post from "./components/Post"
 
 class App extends Component {
 
@@ -39,6 +40,7 @@ async componentWillMount() {
       <Switch>
         <Route exact path="/" render={SplashPage} />
         <Route exact path="/home" render={HomePageComponent} />
+        <Route exact path="/posts/:id" component={Post} />
         <Route exact path="/login" component={LogInPage} />
        
      </Switch>
