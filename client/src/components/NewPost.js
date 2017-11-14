@@ -85,13 +85,18 @@ class NewPost extends Component {
                         <input onChange={this.handleChange} name="title" type="text" value={this.state.newPost.title} />
                     </FormText>
                     <FormText>
-                        <label htmlFor="text">Text: </label>
-                        <textarea onChange={this.handleChange} name="text" type="text" value={this.state.newPost.text} />
+                        <label htmlFor="category">Category: </label>
+                        <textarea onChange={this.handleChange} name="Category" type="text" value={this.state.newPost.category} />
                     </FormText>
+                    <FormText>
+                        <label htmlFor="text">Description: </label>
+                        <textarea onChange={this.handleChange} name="Description" type="text" value={this.state.newPost.description} />
+                    </FormText>
+                    
                     <button>Save Post</button>
                     </form>
-                    </NewPostForm>
-                    </NewPostFormContainer>
+             </NewPostForm>
+             </NewPostFormContainer>
             </div>
         );
     }
