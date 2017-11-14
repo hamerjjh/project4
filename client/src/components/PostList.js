@@ -62,7 +62,7 @@ const PostList = (props) => {
                         <PostCard>
                             {post.title}
                             <br />
-                            <Link to={`/posts/${post.id}`}> {post.title} </Link>
+                            <Link to={`/posts/${post.id}`}> Check It Out </Link>
                         </PostCard>
                 )
             })

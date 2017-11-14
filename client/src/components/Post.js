@@ -101,11 +101,12 @@ class Post extends Component {
 
         return (
             <div>
-            <div>{this.state.posts.title}</div>
+            <div></div>
             <PostContainer>
             <PostBody>
               
-                <PostName>{this.state.posts.category}</PostName>
+                <PostName>{this.state.posts.title}</PostName>
+                <p>Category: {this.state.posts.category}</p>
                 <p>Description: {this.state.posts.description}</p>
                 
              
