@@ -45,32 +45,67 @@ const PostBody = styled.div`
     
   `
 
-
+const Hello = styled.div`
+.tag {
+    border-radius: 20px;
+    border: 2px solid orange;
+    width: 400px;
+    height: 250px;
+  }
+  
+  header {
+    background: orange;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    padding: 2px;
+  }
+  
+  .hello {
+    font-family: sans-serif;
+    font-weight: bold;
+    text-align: center;
+    font-size: 60px;
+    color: white;
+  }
+  
+  .mynameis {
+    font-family: sans-serif;
+    font-weight: bold;
+    text-align: center;
+    font-size: 30px;
+  }
+  
+  .dottedline {
+    border-top: 3px dotted black;
+    margin-top: 100px;
+  }
+`
 
 
 class Post extends Component {
 
     state = {
-        posts: [],
+        posts: {},
         showForm: false,
         
     }
 
     async componentWillMount() {
-        this.getPosts();
-
-    }
-
-    getPosts = async () => {
-        try {
+         try {
             const { id } = this.props.match.params
             const response = await axios.get(`/api/posts/${id}`)
+            console.log(response.data)
             this.setState({ posts: response.data })
 
         } catch (error) {
             console.log(error)
         }
+
     }
+
+    //getPosts = async () => {
+    //   
+    //}
 
 
     deletePost = async (post) => {
@@ -106,8 +141,7 @@ class Post extends Component {
             <PostBody>
               
                 <PostName>{this.state.posts.title}</PostName>
-                <p>Category: {this.state.posts.category}</p>
-                <p>Description: {this.state.posts.description}</p>
+                <Hello><p>Description: {this.state.posts.description}</p></Hello>
                 
              
             
@@ -117,10 +151,10 @@ class Post extends Component {
 
                 {this.state.showForm ? <NewPost pushPosts={this.pushPosts} id={this.props.match.params.id} handleSubmit={this.handleSubmit} /> : null}
               
-                {this.state.posts.map(post => (
+                {/* {this.state.posts.map(post => (
                     <PostCard deletePost={this.deletePost} key={post._id} post={post} />
                 ))}
-                 
+                  */}
                    </div>
         );
     }
