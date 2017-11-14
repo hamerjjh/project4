@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 import styled from "styled-components"
 
 const LoginContainer = styled.div`
-    
+    display: flex;
      box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.3), 0 8px 22px 0 rgba(0, 0, 0, 0.29);
      width: 60%;
      height: 400px;

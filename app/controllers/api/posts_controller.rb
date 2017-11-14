@@ -5,10 +5,10 @@ class Api::PostsController < ApplicationController
         posts_response = @posts.map do |post|
             {
                 id: post.id,
-                type: post.type,
+                category: post.category,
                 title: post.title,
                 description: post.description,
-                votes: Vote.find_by_post_id(post.id).count
+                votes: Vote.where(post_id: post.id).count
             }
         end
         

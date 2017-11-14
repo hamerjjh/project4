@@ -56,19 +56,13 @@ const PostList = (props) => {
     return (
         <PostContainer>
             {
-                props.posts.map((post, index) => {
-                var num = Math.random()*25
-                
-                if (index % 2 === 0 ) {
-                    num = num * -1
-                }
-                    
+                props.posts.map((post) => {  
                 return (
                     
-                        <PostCard rotationDegrees={num}>
-                            <img src={post.photo_url} />
+                        <PostCard>
+                            {post.title}
                             <br />
-                            <Link to={`/posts/${post.id}`}> {post.name} </Link>
+                            <Link to={`/posts/${post.id}`}> {post.title} </Link>
                         </PostCard>
                 )
             })

@@ -122,8 +122,8 @@ class Post extends Component {
             <PostBody>
               
                 <PostName>{this.state.post.category}</PostName>
-                <p>Description: {this.state.city.description}</p>
-                <p>About: {this.state.city.description}</p>
+                <p>Description: {this.state.post.description}</p>
+                
              
             
             <button onClick={this.toggleShowForm}>Add New Post </button>
@@ -133,7 +133,7 @@ class Post extends Component {
                 {this.state.showForm ? <NewPost pushPosts={this.pushPosts} id={this.props.match.params.id} handleSubmit={this.handleSubmit} /> : null}
               
                 {this.state.posts.map(post => (
-                    <PostCard deletePost={this.deletePost} key={post._id} post={post} city={this.state.city}/>
+                    <PostCard deletePost={this.deletePost} key={post._id} post={post} />
                 ))}
                  
                    </div>

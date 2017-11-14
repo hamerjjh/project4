@@ -17,7 +17,9 @@ state = {
 async componentWillMount() {
   try {
     const response = await axios.get("/api/posts")
+    console.log(response)
     this.setState({posts: response.data})
+
     const userResponse = await axios.get("/api/users")
 
   } catch(error) {
