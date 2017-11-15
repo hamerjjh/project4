@@ -49,7 +49,8 @@ class NewPost extends Component {
     state = {
         newPost: {
         title: "",
-        text: ""
+        category: "",
+        description: "",
         }
         
         
@@ -64,7 +65,7 @@ class NewPost extends Component {
 
     handleSubmit = async (event) => {
         event.preventDefault()
-        const response = await axios.post(`/api/cities/${this.props.id}/posts`, {
+        const response = await axios.post(`/api/posts/`, {
             post: this.state.newPost
         })
         this.props.pushPosts(response.data)
@@ -86,11 +87,11 @@ class NewPost extends Component {
                     </FormText>
                     <FormText>
                         <label htmlFor="category">Category: </label>
-                        <textarea onChange={this.handleChange} name="Category" type="text" value={this.state.newPost.category} />
+                        <textarea onChange={this.handleChange} name="category" type="text" value={this.state.newPost.category} />
                     </FormText>
                     <FormText>
-                        <label htmlFor="text">Description: </label>
-                        <textarea onChange={this.handleChange} name="Description" type="text" value={this.state.newPost.description} />
+                        <label htmlFor="description">Description: </label>
+                        <textarea onChange={this.handleChange} name="description" type="text" value={this.state.newPost.description} />
                     </FormText>
                     
                     <button>Save Post</button>

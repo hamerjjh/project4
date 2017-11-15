@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from "react-router-dom"
-
+import Post from "./Post"
 import styled from "styled-components"
 
 const PostContainer = styled.div`
@@ -55,15 +55,13 @@ const PostCard = styled.div`
 const PostList = (props) => {
     return (
         <PostContainer>
+            
             {
                 props.posts.map((post) => {  
                 return (
-                    
+
                         <PostCard>
-                            Title: {post.title}
-                            <br/>
-                            Category: {post.category}
-                            <br />
+                            <Post/>
                             <Link to={`/posts/${post.id}`}> Check It Out </Link>
                         </PostCard>
                 )
