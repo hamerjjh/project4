@@ -5,13 +5,7 @@ import styled from "styled-components"
 import {PostContainer, PostName, PostBody, NewPostForm, NameTag, Header, Hello, NameIs, DottedLine, NameTagContainer} from '../Styles/PostStyle'
 
 
-const PostContainersss = styled.div`
-    flex-wrap: wrap;
-    margin-bottom: 10px;
-    margin-left: 15px;
-    margin-right: 15px;
-    font-family: 'Rammetto One', cursive;
-`
+
 
 const PostCard = styled.div`
     &:hover {
@@ -34,7 +28,7 @@ const PostCard = styled.div`
         filter: saturate(40%) grayscale(30%);
     }
     a {
-        padding-bottom: 10px;
+        
     }
     a:visited {
         color: rgb(17, 17, 114);
@@ -53,7 +47,30 @@ const PostList = (props) => {
                 return (
 
                         <PostCard>
-                            <PostContainer>{post.title}</PostContainer>
+                            <PostName>{post.title}</PostName>
+                            <NameTagContainer>
+                <NameTag>
+                    
+                        <Header>
+                            <Hello>
+                                Hello
+                             </Hello>
+                             </Header>
+                                <NameIs>
+                                <p>{post.description}</p> 
+                                </NameIs>
+                                    <DottedLine>
+                                    
+                                    </DottedLine>
+                               
+                            
+                        
+                    
+                </NameTag>
+                </NameTagContainer>
+                            <br/>
+                            <br/>
+                            <br/>
                             <Link to={`/posts/${post.id}`}> Check It Out </Link>
                         </PostCard>
                 )
