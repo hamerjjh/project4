@@ -2,8 +2,10 @@ import React from 'react';
 import { Link } from "react-router-dom"
 import Post from "./Post"
 import styled from "styled-components"
+import {PostContainer, PostName, PostBody, NewPostForm, NameTag, Header, Hello, NameIs, DottedLine, NameTagContainer} from '../Styles/PostStyle'
 
-const PostContainer = styled.div`
+
+const PostContainersss = styled.div`
     flex-wrap: wrap;
     margin-bottom: 10px;
     margin-left: 15px;
@@ -51,7 +53,7 @@ const PostList = (props) => {
                 return (
 
                         <PostCard>
-                            <Post/>
+                            <PostContainer>{post.title}</PostContainer>
                             <Link to={`/posts/${post.id}`}> Check It Out </Link>
                         </PostCard>
                 )
