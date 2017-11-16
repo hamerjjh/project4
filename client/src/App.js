@@ -7,6 +7,8 @@ import NavBar from './components/NavBar'
 import SplashPage from "./components/SplashPage"
 import LogInPage from "./components/LogInPage"
 import Post from "./components/Post"
+import EditPost from "./components/EditPost"
+
 
 class App extends Component {
 
@@ -51,6 +53,7 @@ pushPosts = (newPost) => {
         <Route exact path="/" render={SplashPage} />
         <Route exact path="/home" render={HomePageComponent} />
         <Route exact path="/posts/:id" component={Post} />
+        <Route exact path="/posts/:id/edit" component={EditPost} />
         <Route exact path="/login" component={LogInPage} />
        
      </Switch>

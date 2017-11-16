@@ -103,8 +103,8 @@ class EditPost extends Component {
                         <input onChange={this.handleChange} name="title" type="text" value={this.state.post.title} />
                     </div>
                     <div>
-                        <label htmlFor="category">Text: </label>
-                        <textarea onChange={this.handleChange} name="category" type="text" value={this.state.post.category} />
+                        <label htmlFor="category">Category: </label>
+                        <input onChange={this.handleChange} name="category" type="text" value={this.state.post.category} />
                     </div>
                     <div>
                         <label htmlFor="description">Description: </label>

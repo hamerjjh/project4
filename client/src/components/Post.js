@@ -84,7 +84,9 @@ class Post extends Component {
                 </NameTagContainer>
                 
              
-            
+                <Link to={`/posts/${this.props.id}/edit`}>
+                    <button>Edit </button> 
+                </Link>
             <button onClick={this.toggleShowForm}>Add New Post </button>
                </PostBody>
                     </PostContainer>
