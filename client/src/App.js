@@ -28,11 +28,21 @@ async componentWillMount() {
   }
 }
 
+pushPosts = (newPost) => {
+  const newArray = [...this.state.posts]
+  newArray.unshift(newPost)
+  this.setState({ posts: newArray })
+}
+
+
+
+
+
 
 
 
   render() {
-    const HomePageComponent = () => (<HomePage posts={this.state.posts}/>)
+    const HomePageComponent = () => (<HomePage pushPosts={this.pushPosts} posts={this.state.posts}/>)
     return (
       <Router>
       <div>

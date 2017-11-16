@@ -26,7 +26,7 @@ const HomePage = (props) => {
         <HomeBackground>
         <WelcomeText>Welcome to Tindros </WelcomeText>
         <PostText>View of all the best Tinder Intros below </PostText>
-        <PostList posts={props.posts}/>
+        <PostList pushPosts={props.pushPosts} posts={props.posts}/>
             
         </HomeBackground>
     );

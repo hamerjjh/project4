@@ -68,7 +68,9 @@ class NewPost extends Component {
         const response = await axios.post(`/api/posts/`, {
             post: this.state.newPost
         })
+        console.log(response.data)
         this.props.pushPosts(response.data)
+        this.props.toggleShowForm()
     }
 
 

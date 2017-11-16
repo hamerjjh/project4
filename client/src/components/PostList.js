@@ -1,7 +1,9 @@
-import React from 'react';
+import React, {Component} from 'react';
 import { Link } from "react-router-dom"
+import axios from "axios";
 import Post from "./Post"
 import styled from "styled-components"
+import NewPost from './NewPost'
 import {PostContainer, PostName, PostBody, NewPostForm, NameTag, Header, Hello, NameIs, DottedLine, NameTagContainer} from '../Styles/PostStyle'
 
 
@@ -38,16 +40,59 @@ const PostCard = styled.div`
 
 
 
-const PostList = (props) => {
+class PostList extends Component {
+
+    state = {
+        posts: {},
+        showForm: false,
+        
+    }
+
+    async componentWillMount() {
+        this.getAllPosts()
+    }
+
+    getAllPosts = async ()=> {
+        try {
+            const { id } = this.props.match.params
+            const response = await axios.get(`/api/posts/${id}`)
+            console.log(response.data)
+            this.setState({ posts: response.data })
+
+        } catch (error) {
+            console.log(error)
+        }
+
+    }
+
+    deletePost = async (post) => {
+        try {
+            const { id } = this.props.match.params
+            const response = await axios.delete(`/api/posts/${id}`)
+            console.log(response)
+            this.setState({ posts: response.data })
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    toggleShowForm = () => {
+        this.setState({ showForm: !this.state.showForm })
+    }
+
+
+ 
+    render(){
     return (
         <PostContainer>
-            
+            <button onClick={this.toggleShowForm}>Add New Post </button>
+            {this.state.showForm ? <NewPost toggleShowForm={this.toggleShowForm} pushPosts={this.props.pushPosts}  handleSubmit={this.handleSubmit} /> : null}
             {
-                props.posts.map((post) => {  
+                this.props.posts.map((post) => {  
                 return (
 
                         <PostCard>
-                            <PostName>{post.title}</PostName>
+                            <PostName></PostName>
                             <NameTagContainer>
                 <NameTag>
                     
@@ -68,10 +113,8 @@ const PostList = (props) => {
                     
                 </NameTag>
                 </NameTagContainer>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <Link to={`/posts/${post.id}`}> Check It Out </Link>
+                           
+                <Link to={`/posts/${post.id}`}> Check It Out </Link>
                         </PostCard>
                 )
             })
@@ -79,6 +122,7 @@ const PostList = (props) => {
             
         </PostContainer>
     );
+}
 };
 
 export default PostList;
