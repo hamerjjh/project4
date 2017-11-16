@@ -71,6 +71,7 @@ class PostList extends Component {
             const response = await axios.delete(`/api/posts/${id}`)
             console.log(response)
             this.setState({ posts: response.data })
+            this.props.refreshPosts()
         } catch (error) {
             console.log(error)
         }

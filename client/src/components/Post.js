@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from "axios";
 import styled from "styled-components"
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import PostCard from './PostCard'
 import {PostContainer, PostName, PostBody, NewPostForm, NameTag, Header, Hello, NameIs, DottedLine, NameTagContainer} from '../Styles/PostStyle'
 
@@ -12,6 +12,7 @@ class Post extends Component {
     state = {
         posts: {},
         showForm: false,
+        redirectToPost: false,
         
     }
 
@@ -32,8 +33,9 @@ class Post extends Component {
         try {
             const { id } = this.props.match.params
             const response = await axios.delete(`/api/posts/${id}`)
-            console.log(response)
+            console.log(response.data)
             this.setState({ posts: response.data })
+            this.setState({redirectToPost: !this.state.redirectToPost})
         } catch (error) {
             console.log(error)
         }
@@ -52,7 +54,14 @@ class Post extends Component {
     }
 
     render() {
-
+        if (this.state.redirectToPost){
+            return (
+                <Redirect to ={{
+                    pathname: '/home',
+                    state: {posts: this.state.posts}
+                }}/> 
+            )
+        }
 
         return (
             <div>

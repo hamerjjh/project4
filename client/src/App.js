@@ -18,6 +18,20 @@ state = {
 }
 
 async componentWillMount() {
+  this.refreshPosts()
+}
+
+pushPosts = (newPost) => {
+  const newArray = [...this.state.posts]
+  newArray.unshift(newPost)
+  this.setState({ posts: newArray })
+}
+
+refreshPosts = async (newPosts) => {
+  if (newPosts){
+    return this.setState({posts: newPosts})
+  }
+  
   try {
     const response = await axios.get("/api/posts")
     console.log(response)
@@ -30,13 +44,6 @@ async componentWillMount() {
   }
 }
 
-pushPosts = (newPost) => {
-  const newArray = [...this.state.posts]
-  newArray.unshift(newPost)
-  this.setState({ posts: newArray })
-}
-
-
 
 
 
@@ -44,7 +51,7 @@ pushPosts = (newPost) => {
 
 
   render() {
-    const HomePageComponent = () => (<HomePage pushPosts={this.pushPosts} posts={this.state.posts}/>)
+    const HomePageComponent = (props) => (<HomePage refreshPosts={this.refreshPosts} pushPosts={this.pushPosts} posts={this.state.posts} {...props}/>)
     return (
       <Router>
       <div>
