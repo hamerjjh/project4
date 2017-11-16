@@ -3,17 +3,17 @@ import axios from "axios";
 import styled from "styled-components"
 
 
-const Reactions = styled.div`
+const ReactionContainer = styled.div`
 display: flex;
-justify-content: space-around;
+flex-direction: row;
+justify-content: space-between;
 
 img {
-    height: 75px;
-    width: 75px;
+    height: 60px;
+    width: 60px;
 }
-
-
 `
+
 
 
 
@@ -21,15 +21,15 @@ const Vote = (props) => {
     const { disapprove, approve } = props;
   
     return (
-      <div>
-            <Reactions>
+      <ReactionContainer>
+            <div>
         <img onClick={approve} src="https://www.emojirequest.com/images/PointingLaughingEmoji.jpg"></img>
-            </Reactions>
-            <Reactions>
+            </div>
+            <div>
         <img onClick={disapprove} src="http://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-10/256/pouting-face.png" ></img>
-            </Reactions>
+            </div>
         
-      </div>
+      </ReactionContainer>
     )
   }
 
