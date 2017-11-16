@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import axios from "axios";
-import NewPost from './NewPost'
 import styled from "styled-components"
 import { Link } from 'react-router-dom'
 import PostCard from './PostCard'
@@ -84,14 +83,17 @@ class Post extends Component {
                 </NameTagContainer>
                 
              
-                <Link to={`/posts/${this.props.id}/edit`}>
+                <Link to={`/posts/${this.props.match.params.id}/edit`}>
                     <button>Edit </button> 
                 </Link>
-            <button onClick={this.toggleShowForm}>Add New Post </button>
+                <button onClick={this.deletePost}>Delete Post</button>
+                <Link to={`/home/`}>
+                    <button>Back to Home </button> 
+                </Link>
                </PostBody>
                     </PostContainer>
 
-                {this.state.showForm ? <NewPost pushPosts={this.pushPosts} id={this.props.match.params.id} handleSubmit={this.handleSubmit} /> : null}
+               
               
                 {/* {this.state.posts.map(post => (
                     <PostCard deletePost={this.deletePost} key={post._id} post={post} />

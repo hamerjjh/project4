@@ -24,7 +24,7 @@ class Api::PostsController < ApplicationController
         render json: @post
     end
     def update
-        @post_params = Post.find(params[:id])
+        @post = Post.find(params[:id])
         @post.update!(post_params)
     
         render json: @post

@@ -54,7 +54,7 @@ class EditPost extends Component {
             category: "",
             description: ""
         },
-        redirectToPostPage: false
+        redirectToPost: false
 
     }
 
@@ -77,7 +77,7 @@ class EditPost extends Component {
         const response = await axios.patch(`/api/posts/${postId}`, {
             post: this.state.post
         })
-        this.setState({ redirectToPostPage: true, post: response.data })
+        this.setState({ redirectToPost: true, post: response.data })
 
     }
 
@@ -85,9 +85,9 @@ class EditPost extends Component {
 
     render() {
 
-        if (this.state.redirectToCityPage) {
-            const cityId = this.props.match.params.city_id
-            return <Redirect to={`/cities/${cityId}`} />
+        if (this.state.redirectToPost) {
+            const postId = this.props.match.params.id
+            return <Redirect to={`/posts/${postId}`} />
         }
 
         return (
@@ -112,6 +112,9 @@ class EditPost extends Component {
                     </div>
                     </PostBox>
                     <button>Save Post</button>
+                    <Link to={`/posts/${this.props.match.params.id}`}>
+                    <button>Back to Post </button> 
+                </Link>
                 </form>
                 </PostForm>
             </div>
