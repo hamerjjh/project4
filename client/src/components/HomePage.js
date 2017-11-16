@@ -24,7 +24,9 @@ const PostText = styled.h2`
 class HomePage extends React.Component {
 
     componentWillMount() {
-        if (this.props.location.state.posts){
+        if (this.props.location && 
+            this.props.location.state && 
+            this.props.location.state.posts){
             this.props.refreshPosts(this.props.location.state.posts)
         }
     }
