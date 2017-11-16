@@ -3,6 +3,7 @@ import axios from "axios";
 import styled from "styled-components"
 import { Link, Redirect } from 'react-router-dom'
 import PostCard from './PostCard'
+import Vote from './Vote'
 import {PostContainer, PostName, PostBody, NewPostForm, NameTag, Header, Hello, NameIs, DottedLine, NameTagContainer} from '../Styles/PostStyle'
 
 
@@ -85,7 +86,7 @@ class Post extends Component {
                                     
                                     </DottedLine>
                                
-                            
+                            <Vote/>
                         
                     
                 </NameTag>
