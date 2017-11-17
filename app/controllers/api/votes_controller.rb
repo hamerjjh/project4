@@ -8,7 +8,7 @@ class Api::VotesController < ApplicationController
       private
       
       def vote_params
-          params.require(:vote).permit(:userId, :postId)
+          params.require(:vote).permit(:user_id, :post_id)
       end
 end
     

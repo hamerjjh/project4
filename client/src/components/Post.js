@@ -4,7 +4,7 @@ import styled from "styled-components"
 import { Link, Redirect } from 'react-router-dom'
 import PostCard from './PostCard'
 import Vote from './Vote'
-import {PostContainer, PostName, PostBody, NewPostForm, NameTag, Header, Hello, NameIs, DottedLine, NameTagContainer} from '../Styles/PostStyle'
+import { PostContainer, PostName, PostBody, NewPostForm, NameTag, Header, Hello, NameIs, DottedLine, NameTagContainer } from '../Styles/PostStyle'
 
 
 
@@ -14,15 +14,18 @@ class Post extends Component {
         posts: {},
         showForm: false,
         redirectToPost: false,
-        
+        doneLoading: false
     }
 
     async componentWillMount() {
-         try {
+        try {
             const { id } = this.props.match.params
             const response = await axios.get(`/api/posts/${id}`)
             console.log(response.data)
-            this.setState({ posts: response.data })
+            this.setState({
+                posts: response.data,
+                doneLoading: true
+            })
 
         } catch (error) {
             console.log(error)
@@ -36,7 +39,7 @@ class Post extends Component {
             const response = await axios.delete(`/api/posts/${id}`)
             console.log(response.data)
             this.setState({ posts: response.data })
-            this.setState({redirectToPost: !this.state.redirectToPost})
+            this.setState({ redirectToPost: !this.state.redirectToPost })
         } catch (error) {
             console.log(error)
         }
@@ -55,61 +58,60 @@ class Post extends Component {
     }
 
     render() {
-        if (this.state.redirectToPost){
+        if (this.state.redirectToPost) {
             return (
-                <Redirect to ={{
+                <Redirect to={{
                     pathname: '/home',
-                    state: {posts: this.state.posts}
-                }}/> 
+                    state: { posts: this.state.posts }
+                }} />
             )
         }
 
         return (
             <div>
-            <div></div>
-            <PostContainer>
-            <PostBody>
-              <p>*Click Emoji To Vote On The Tindro*</p>
-                <PostName>Title: {this.state.posts.title}</PostName>
-                <NameTagContainer>
-                <NameTag>
-                    
-                        <Header>
-                            <Hello>
-                                Hello
-                             </Hello>
-                             </Header>
-                                <NameIs>
-                                <p>{this.state.posts.description}</p> 
-                                </NameIs>
-                                    <DottedLine>
-                                    
-                                    </DottedLine>
-                               
-                            <Vote/>
-                        
-                    
-                </NameTag>
-                </NameTagContainer>
-                
-             
-                <Link to={`/posts/${this.props.match.params.id}/edit`}>
-                    <button>Edit </button> 
-                </Link>
-                <button onClick={this.deletePost}>Delete Post</button>
-                <Link to={`/home/`}>
-                    <button>Back to Home </button> 
-                </Link>
-               </PostBody>
-                    </PostContainer>
+                <div></div>
+                <PostContainer>
+                    <PostBody>
+                        <p>*Click Emoji To Vote On The Tindro*</p>
+                        <PostName>Title: {this.state.posts.title}</PostName>
+                        <NameTagContainer>
+                            <NameTag>
 
-               
-              
+                                <Header>
+                                    <Hello>
+                                        Hello
+                             </Hello>
+                                </Header>
+                                <NameIs>
+                                    <p>{this.state.posts.description}</p>
+                                </NameIs>
+                                <DottedLine>
+
+                                </DottedLine>
+
+                                {this.state.doneLoading ? <Vote {...this.state.posts} /> : null}
+
+                            </NameTag>
+                        </NameTagContainer>
+
+
+                        <Link to={`/posts/${this.props.match.params.id}/edit`}>
+                            <button>Edit </button>
+                        </Link>
+                        <button onClick={this.deletePost}>Delete Post</button>
+                        <Link to={`/home/`}>
+                            <button>Back to Home </button>
+                        </Link>
+                    </PostBody>
+                </PostContainer>
+
+
+
                 {/* {this.state.posts.map(post => (
                     <PostCard deletePost={this.deletePost} key={post._id} post={post} />
                 ))}
                   */}
-                   </div>
+            </div>
         );
     }
 }

@@ -23,17 +23,23 @@ class Vote extends Component {
         totalVotes: 0
     }
 
+    componentWillMount() {
+       this.setState({
+         totalVotes: this.props.votes
+       })
+    }
+
+    _approve = async () => {
+        const payload = {
+            vote: {
+                post_id: this.props.id
+            }
+        }
 
 
-    // const { disapprove, approve } = props;
-  
+        const response = await axios.post(`/api/posts/${this.props.id}/votes`, payload)
 
-    _approve = () => {
-        // const payload = {
-        //   approve: 1
-
-        // };
-        const addOne  = this.state.totalVotes + 1
+        const addOne = this.state.totalVotes + 1
 
         this.setState({
             totalVotes: addOne
@@ -49,22 +55,22 @@ class Vote extends Component {
         console.log(this.state.totalVotes)
     }
 
-render() {
+    render() {
 
 
-    return (
-      <ReactionContainer>
-            <div>
-        <img onClick={this._approve} src="https://www.emojirequest.com/images/PointingLaughingEmoji.jpg"></img>
-            </div>
-            Votes:{this.state.totalVotes}
-            <div>
-        <img onClick={this._disapprove} src="http://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-10/256/pouting-face.png" ></img>
-            </div>
-        
-      </ReactionContainer>
-    )
-  }
+        return (
+            <ReactionContainer>
+                <div>
+                    <img onClick={this._approve} src="https://www.emojirequest.com/images/PointingLaughingEmoji.jpg"></img>
+                </div>
+                Votes:{this.state.totalVotes}
+                <div>
+                    <img onClick={this._disapprove} src="http://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-10/256/pouting-face.png" ></img>
+                </div>
+
+            </ReactionContainer>
+        )
+    }
 }
 
-  export default Vote;
+export default Vote;

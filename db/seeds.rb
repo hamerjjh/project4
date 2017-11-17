@@ -25,10 +25,26 @@ wholefoods = Post.create(
     title: "Whole Foods",
     description: "Going to Whole Foods today, need me to pick you up anything?",
 )
+maps = Post.create(
+    category: "online",
+    title: "Apple Maps",
+    description: "I must be using Apple Maps because I keep getting lost in your eyes"
+)
+
 starbucks = Post.create(
     category: "both",
     title: "Starbucks",
     description: "Do you work at Starbucks? Because I like you a latte.",
+)
+world = Post.create(
+    category: "both",
+    title: "Hello World",
+    description: "You had me at 'Hello World'.",
+)
+numbers = Post.create(
+    category: "online",
+    title: "Number",
+    description: "They say Tinder is a number's game... So can I have your number?",
 )
 forgot = Post.create(
     category: "in-person",

@@ -12,28 +12,42 @@ class Api::PostsController < ApplicationController
             }
         end
         
-        render json: @posts 
+        render json: posts_response 
     end
+
     def create
         @post = Post.create!(post_params)
     
         render json: @post
-      end
+    end
+
     def show 
         @post = Post.find(params[:id])
-        render json: @post
+
+        post_response = {
+            id: @post.id,
+            category: @post.category,
+            title: @post.title,
+            description: @post.description,
+            votes: Vote.where(post_id: @post.id).count
+        }
+
+        render json: post_response
     end
+
     def update
         @post = Post.find(params[:id])
         @post.update!(post_params)
     
         render json: @post
-      end
+    end
+
     def destroy
         @post = Post.find(params[:id]).delete
         @posts = Post.all
         render json: @posts
     end
+
     private
     
     def post_params
