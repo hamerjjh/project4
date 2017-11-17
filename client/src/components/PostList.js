@@ -115,7 +115,7 @@ class PostList extends Component {
                 </NameTag>
                 </NameTagContainer>
                            
-                <Link to={`/posts/${post.id}`}> Check It Out </Link>
+                <Link to={`/posts/${post.id}`}> Click to Vote </Link>
                         </PostCard>
                 )
             })

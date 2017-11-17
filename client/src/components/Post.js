@@ -69,8 +69,8 @@ class Post extends Component {
             <div></div>
             <PostContainer>
             <PostBody>
-              
-                <PostName>{this.state.posts.title}</PostName>
+              <p>Click Emoji To Vote On The Tindro</p>
+                <PostName>Title: {this.state.posts.title}</PostName>
                 <NameTagContainer>
                 <NameTag>
                     
