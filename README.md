@@ -26,3 +26,5 @@ Things you may want to cover:
 # Heroku Link
 https://damp-island-66982.herokuapp.com/
 
+#Trello Link
+https://trello.com/b/LFxcGidF/tintros
