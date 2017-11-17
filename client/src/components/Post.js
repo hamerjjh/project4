@@ -11,7 +11,7 @@ import { PostContainer, PostName, PostBody, NewPostForm, NameTag, Header, Hello,
 class Post extends Component {
 
     state = {
-        posts: {},
+        post: {},
         showForm: false,
         redirectToPost: false,
         doneLoading: false
@@ -23,7 +23,7 @@ class Post extends Component {
             const response = await axios.get(`/api/posts/${id}`)
             console.log(response.data)
             this.setState({
-                posts: response.data,
+                post: response.data,
                 doneLoading: true
             })
 
@@ -38,7 +38,7 @@ class Post extends Component {
             const { id } = this.props.match.params
             const response = await axios.delete(`/api/posts/${id}`)
             console.log(response.data)
-            this.setState({ posts: response.data })
+            this.setState({ post: response.data })
             this.setState({ redirectToPost: !this.state.redirectToPost })
         } catch (error) {
             console.log(error)
@@ -49,20 +49,12 @@ class Post extends Component {
         this.setState({ showForm: !this.state.showForm })
     }
 
-
-    pushPosts = (newPost) => {
-        const newArray = [...this.state.posts]
-        newArray.unshift(newPost)
-        this.setState({ posts: newArray })
-        this.toggleShowForm()
-    }
-
     render() {
         if (this.state.redirectToPost) {
             return (
                 <Redirect to={{
                     pathname: '/home',
-                    state: { posts: this.state.posts }
+                    state: { post: this.state.post }
                 }} />
             )
         }
@@ -73,7 +65,7 @@ class Post extends Component {
                 <PostContainer>
                     <PostBody>
                         <p>*Click Emoji To Vote On The Tindro*</p>
-                        <PostName>Title: {this.state.posts.title}</PostName>
+                        <PostName>Title: {this.state.post.title}</PostName>
                         <NameTagContainer>
                             <NameTag>
 
@@ -83,13 +75,13 @@ class Post extends Component {
                              </Hello>
                                 </Header>
                                 <NameIs>
-                                    <p>{this.state.posts.description}</p>
+                                    <p>{this.state.post.description}</p>
                                 </NameIs>
                                 <DottedLine>
 
                                 </DottedLine>
 
-                                {this.state.doneLoading ? <Vote {...this.state.posts} /> : null}
+                                {this.state.doneLoading ? <Vote {...this.state.post} /> : null}
 
                             </NameTag>
                         </NameTagContainer>
