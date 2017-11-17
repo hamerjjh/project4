@@ -1,14 +1,14 @@
 import styled from 'styled-components'
 
 export  const PostContainer = styled.div`
-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0   6px 20px 0 rgba(0, 0, 0, 0.19);
+
 padding-top: 0px;
 padding-bottom: 10px;
 background-color: white;
 opacity: .8;
 justify-content: center;
-margin-left: 10px;
-margin-right: 10px;
+margin-left: 50px;
+
 margin-bottom: 20px;
 `
 
@@ -64,7 +64,7 @@ export const NameIs = styled.div`
 font-family: sans-serif;
 font-weight: bold;
 text-align: center;
-font-size: 30px;
+font-size: 25px;
 `
 
 export const DottedLine = styled.div`.dottedline {

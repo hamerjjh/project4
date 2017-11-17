@@ -85,9 +85,12 @@ class PostList extends Component {
  
     render(){
     return (
+        <div>
+        <button onClick={this.toggleShowForm}>Add New Post </button>
+        {this.state.showForm ? <NewPost toggleShowForm={this.toggleShowForm} pushPosts={this.props.pushPosts}  handleSubmit={this.handleSubmit} /> : null}
         <PostContainer>
-            <button onClick={this.toggleShowForm}>Add New Post </button>
-            {this.state.showForm ? <NewPost toggleShowForm={this.toggleShowForm} pushPosts={this.props.pushPosts}  handleSubmit={this.handleSubmit} /> : null}
+            
+           
             {
                 this.props.posts.map((post) => {  
                 return (
@@ -104,6 +107,7 @@ class PostList extends Component {
                              </Header>
                                 <NameIs>
                                 <p>{post.description}</p> 
+                                <Link to={`/posts/${post.id}`}> Click to Vote </Link>
                                 </NameIs>
                                     <DottedLine>
                                     
@@ -115,13 +119,14 @@ class PostList extends Component {
                 </NameTag>
                 </NameTagContainer>
                            
-                <Link to={`/posts/${post.id}`}> Click to Vote </Link>
+                
                         </PostCard>
                 )
             })
             }
             
         </PostContainer>
+        </div>
     );
 }
 };
