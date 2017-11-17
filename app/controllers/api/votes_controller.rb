@@ -5,7 +5,12 @@ class Api::VotesController < ApplicationController
         render json: @vote
       end
 
+      def destroy
+        
+      end 
+
       private
+
       
       def vote_params
           params.require(:vote).permit(:user_id, :post_id)
