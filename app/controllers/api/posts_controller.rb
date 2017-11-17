@@ -8,7 +8,8 @@ class Api::PostsController < ApplicationController
                 category: post.category,
                 title: post.title,
                 description: post.description,
-                votes: Vote.where(post_id: post.id).count
+                votes: Vote.where(post_id: post.id).count,
+                downvotes: Downvote.where(post_id: post.id).count
             }
         end
         
@@ -29,7 +30,8 @@ class Api::PostsController < ApplicationController
             category: @post.category,
             title: @post.title,
             description: @post.description,
-            votes: Vote.where(post_id: @post.id).count
+            votes: Vote.where(post_id: @post.id).count,
+            downvotes: Downvote.where(post_id: @post.id).count
         }
 
         render json: post_response

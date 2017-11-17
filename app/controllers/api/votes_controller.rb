@@ -5,10 +5,6 @@ class Api::VotesController < ApplicationController
         render json: @vote
       end
 
-      def destroy
-        
-      end 
-
       private
 
       

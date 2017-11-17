@@ -25,7 +25,8 @@ class Vote extends Component {
 
     componentWillMount() {
        this.setState({
-         totalVotes: this.props.votes
+         totalVotes: this.props.votes - this.props.downvotes
+
        })
     }
 
@@ -46,7 +47,16 @@ class Vote extends Component {
         })
         console.log(this.state.totalVotes)
     }
-    _disapprove = () => {
+    _disapprove = async () => {
+        const payload = {
+            downvote: {
+                post_id: this.props.id
+            }
+        }
+
+        const response = await axios.post(`/api/posts/${this.props.id}/downvotes`, payload)
+
+
         const removeOne = this.state.totalVotes - 1
 
         this.setState({
