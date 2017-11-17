@@ -22,7 +22,8 @@ const PostCard = styled.div`
     text-align: center;
     justify-content: space-around;
     float: left;
-    padding: 20px 10px 15px 10px;
+    padding: 0px 10px;
+    margin-top: 0px;
     
     
     img {
