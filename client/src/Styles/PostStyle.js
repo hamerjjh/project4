@@ -1,5 +1,12 @@
 import styled from 'styled-components'
 
+
+export const Button = styled.button`
+display: flex;
+justify-content: center;
+margin: 0 auto;
+`
+
 export  const PostContainer = styled.div`
 
 padding-top: 0px;

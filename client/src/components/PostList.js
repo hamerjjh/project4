@@ -4,7 +4,7 @@ import axios from "axios";
 import Post from "./Post"
 import styled from "styled-components"
 import NewPost from './NewPost'
-import {PostContainer, PostName, PostBody, NewPostForm, NameTag, Header, Hello, NameIs, DottedLine, NameTagContainer} from '../Styles/PostStyle'
+import {PostContainer, PostName, PostBody, NewPostForm, NameTag, Header, Hello, NameIs, DottedLine, NameTagContainer, Button} from '../Styles/PostStyle'
 
 
 
@@ -86,7 +86,7 @@ class PostList extends Component {
     render(){
     return (
         <div>
-        <button onClick={this.toggleShowForm}>Add New Post </button>
+        <Button onClick={this.toggleShowForm}>Add New Post </Button>
         {this.state.showForm ? <NewPost toggleShowForm={this.toggleShowForm} pushPosts={this.props.pushPosts}  handleSubmit={this.handleSubmit} /> : null}
         <PostContainer>
             
