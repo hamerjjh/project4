@@ -5,11 +5,13 @@ application up and running.
 
 Things you may want to cover:
 
-* Ruby version
+# Tools
 
-* System dependencies
+* React
 
-* Configuration
+* Rails
+
+* Postgresql
 
 * Database creation
 
@@ -31,3 +33,4 @@ https://trello.com/b/LFxcGidF/tintros
 
 #WireFrames and ERD
 Wireframes and ERD are located in the screenshots folder 
+
