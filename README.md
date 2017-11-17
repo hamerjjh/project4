@@ -28,3 +28,6 @@ https://damp-island-66982.herokuapp.com/
 
 #Trello Link
 https://trello.com/b/LFxcGidF/tintros
+
+#WireFrames and ERD
+Wireframes and ERD are located in the screenshots folder 
